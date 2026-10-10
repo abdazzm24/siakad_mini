@@ -28,6 +28,8 @@ func (e *DuplicateError) Error() string {
 	return fmt.Sprintf("duplicate: %s", e.Constraint)
 }
 
+func (e *DuplicateError) Is(target error) bool { return target == ErrDuplicate }
+
 // DBTX adalah interface yang dipenuhi oleh *pgxpool.Pool maupun pgx.Tx.
 // Semua repository menerima DBTX bukan Pool langsung agar bisa dipakai dalam transaction.
 type DBTX interface {

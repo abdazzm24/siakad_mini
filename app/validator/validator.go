@@ -14,7 +14,7 @@ import (
 )
 
 var (
-	nimPattern           = regexp.MustCompile(`^[0-9]{12}$`)
+	nimPattern           = regexp.MustCompile(`^[0-9]{5}$`)
 	tahunAkademikPattern = regexp.MustCompile(`^([0-9]{4})/([0-9]{4})-(Ganjil|Genap)$`)
 )
 
@@ -104,7 +104,7 @@ var specialMessages = map[string]string{
 	"ipk_terakhir.gte": "IPK harus antara 0.00 sampai 4.00",
 	"ipk_terakhir.lte": "IPK harus antara 0.00 sampai 4.00",
 	"email.email":      "Format email tidak valid",
-	"nim.nim":          "NIM harus terdiri dari 12 digit angka",
+	"nim.nim":          "NIM harus terdiri dari 5 digit angka",
 }
 
 func messageFor(fe playground.FieldError) string {

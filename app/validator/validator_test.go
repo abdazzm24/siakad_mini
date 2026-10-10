@@ -24,7 +24,7 @@ func TestIsTahunAkademik(t *testing.T) {
 
 func TestCreateStudentValidation(t *testing.T) {
 	ok := request.CreateStudentRequest{
-		NIM: "187221000021", Nama: "Mahasiswa Baru", Email: "baru@siakad.test",
+		NIM: "24021", Nama: "Mahasiswa Baru", Email: "baru@siakad.test",
 		Prodi: "Teknik Informatika", Angkatan: 2024,
 	}
 	if errs := Validate(&ok); errs != nil {
@@ -32,7 +32,7 @@ func TestCreateStudentValidation(t *testing.T) {
 	}
 
 	bad := request.CreateStudentRequest{
-		NIM: "123", Email: "bukan-email", Angkatan: time.Now().Year() + 1,
+		NIM: "123456", Email: "bukan-email", Angkatan: time.Now().Year() + 1,
 	}
 	errs := Validate(&bad)
 	for _, field := range []string{"nim", "nama", "email", "prodi", "angkatan"} {
