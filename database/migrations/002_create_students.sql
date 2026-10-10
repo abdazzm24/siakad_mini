@@ -3,7 +3,7 @@
 CREATE TABLE IF NOT EXISTS students (
     id           BIGSERIAL     PRIMARY KEY,
     user_id      BIGINT        NOT NULL REFERENCES users(id),
-    nim          VARCHAR(12)   NOT NULL,
+    nim          VARCHAR(5)    NOT NULL,
     nama         VARCHAR(150)  NOT NULL,
     prodi        VARCHAR(100)  NOT NULL,
     angkatan     SMALLINT      NOT NULL,
@@ -13,7 +13,7 @@ CREATE TABLE IF NOT EXISTS students (
     updated_at   TIMESTAMPTZ   NOT NULL DEFAULT NOW(),
     CONSTRAINT students_user_id_key    UNIQUE (user_id), -- menjamin relasi 1-1
     CONSTRAINT students_nim_key        UNIQUE (nim),
-    CONSTRAINT students_nim_check      CHECK (nim ~ '^[0-9]{12}$'),
+    CONSTRAINT students_nim_check      CHECK (nim ~ '^[0-9]{5}$'),
     CONSTRAINT students_angkatan_check CHECK (angkatan BETWEEN 1000 AND 9999),
     CONSTRAINT students_ipk_check      CHECK (ipk_terakhir >= 0 AND ipk_terakhir <= 4)
 );
